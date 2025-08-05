@@ -1,1 +1,1 @@
-# genshin-discord-bot-v1.3
+# genshin-discord-bot-v1.4
