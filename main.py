@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Bot is running!"
+    return f"Bot is running as {bot.user if bot.user else 'Unknown'}"
 
 def run_web():
     port = int(os.environ.get("PORT", 8080))
@@ -136,4 +136,7 @@ async def auto_post_codes():
 # === Start Everything ===
 if __name__ == "__main__":
     Thread(target=run_web).start()
-    bot.run(os.getenv("DISCORD_TOKEN"))
+    try:
+        bot.run(os.getenv("DISCORD_TOKEN"))
+    except Exception as e:
+        print("❌ Bot crashed with error:", e)
